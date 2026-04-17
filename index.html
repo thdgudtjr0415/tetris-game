@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Block Architect · Tetris — by SHS</title>
   <meta name="description" content="건축적 사고로 만든 테트리스 미니게임. 송형석 포트폴리오.">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -595,57 +595,62 @@
       }
 
       header {
-        padding: 12px 16px;
+        padding: 10px 16px;
       }
 
       .game-wrapper {
-        padding: 12px 8px 16px;
+        padding: 8px 8px 8px;
       }
 
       .game-header {
-        margin-bottom: 16px;
+        margin-bottom: 8px;
       }
 
       .game-header-label {
-        font-size: 9px;
-        margin-bottom: 4px;
+        font-size: 8px;
+        margin-bottom: 2px;
+      }
+
+      .game-title {
+        font-size: 20px;
       }
 
       .game-subtitle {
-        font-size: 11px;
-        margin-top: 6px;
+        font-size: 10px;
+        margin-top: 2px;
       }
 
       .game-layout {
-        gap: 8px;
+        gap: 6px;
       }
 
       .side-panel-left,
       .side-panel-right {
-        min-width: 72px;
+        min-width: 60px;
       }
 
       .panel-box {
-        padding: 8px;
+        padding: 6px;
       }
 
       .panel-value {
-        font-size: 16px;
+        font-size: 14px;
       }
 
       .panel-label {
-        font-size: 8px;
+        font-size: 7px;
+        margin-bottom: 4px;
       }
 
       .next-piece-canvas,
       .hold-piece-canvas {
-        grid-template-columns: repeat(4, 14px);
-        grid-template-rows: repeat(4, 14px);
+        grid-template-columns: repeat(4, 12px);
+        grid-template-rows: repeat(4, 12px);
       }
 
       .next-cell {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
       }
 
       .mobile-controls {
@@ -657,67 +662,159 @@
         display: none;
       }
 
-      .game-title {
-        font-size: 24px;
+      .board-label {
+        font-size: 7px;
+        bottom: -16px;
       }
 
       footer {
-        padding: 12px 16px;
-        flex-direction: column;
-        gap: 4px;
-        font-size: 9px;
+        display: none;
+      }
+
+      .coords {
+        display: none;
       }
     }
 
+    /* iPhone SE / small phones */
     @media (max-width: 500px) {
       :root {
-        --cell-size: calc((100vw - 120px) / 10);
+        --cell-size: calc((100vw - 100px) / 10);
       }
 
       .side-panel-left { display: none; }
 
       .game-layout {
-        gap: 6px;
+        gap: 4px;
       }
 
       .side-panel-right {
-        min-width: 60px;
+        min-width: 52px;
       }
 
       .panel-value {
-        font-size: 14px;
+        font-size: 13px;
+      }
+
+      .panel-value-sm {
+        font-size: 11px;
+      }
+
+      .high-scores {
+        display: none;
       }
 
       .mobile-btn {
-        width: 58px;
-        height: 58px;
-        font-size: 20px;
+        width: 56px;
+        height: 52px;
+        font-size: 18px;
       }
 
       .mobile-btn-wide {
-        width: 130px;
-        font-size: 13px;
+        width: 126px;
+        font-size: 12px;
+      }
+
+      .mobile-controls-wrapper {
+        gap: 6px;
+      }
+
+      .mobile-top-row {
+        max-width: 240px;
+      }
+
+      .mobile-controls-row {
+        gap: 8px;
+      }
+    }
+
+    /* Very tall phones (iPhone 15 Pro Max etc) — use extra space */
+    @media (max-height: 900px) and (max-width: 500px) {
+      .game-header {
+        margin-bottom: 4px;
+      }
+
+      .game-title {
+        font-size: 18px;
+      }
+
+      .game-subtitle {
+        display: none;
+      }
+
+      .game-header-label {
+        margin-bottom: 0;
+      }
+    }
+
+    /* Short phones — ultra compact */
+    @media (max-height: 750px) and (max-width: 500px) {
+      header {
+        padding: 6px 12px;
+      }
+
+      .logo { font-size: 14px; }
+      .back-link { font-size: 9px; }
+
+      .game-wrapper {
+        padding: 4px 6px 4px;
+      }
+
+      .game-header {
+        margin-bottom: 2px;
+      }
+
+      .game-title {
+        font-size: 16px;
+      }
+
+      .game-header-label {
+        display: none;
+      }
+
+      :root {
+        --cell-size: calc((100vh - 380px) / 20);
+      }
+
+      .mobile-btn {
+        width: 50px;
+        height: 46px;
+        font-size: 16px;
+      }
+
+      .mobile-btn-wide {
+        width: 114px;
+        font-size: 11px;
+        height: 42px;
+      }
+
+      .mobile-controls-wrapper {
+        gap: 4px;
+      }
+
+      .panel-box {
+        padding: 4px;
       }
     }
 
     @media (max-width: 380px) {
       :root {
-        --cell-size: calc((100vw - 100px) / 10);
+        --cell-size: calc((100vw - 90px) / 10);
       }
 
       .side-panel-right {
-        min-width: 50px;
+        min-width: 46px;
       }
 
       .mobile-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
+        width: 48px;
+        height: 44px;
+        font-size: 15px;
       }
 
       .mobile-btn-wide {
-        width: 114px;
-        font-size: 12px;
+        width: 110px;
+        font-size: 11px;
       }
     }
   </style>
@@ -726,7 +823,7 @@
 
   <header>
     <div class="logo">
-      Block <span class="logo-sub">Architect</span>
+      Block 
     </div>
     <a href="https://thdgudtjr0415.github.io/" class="back-link">
       ← <span>Portfolio</span>
@@ -738,7 +835,7 @@
     <div class="game-header">
       <div class="game-header-label">G-01 / MINI GAME · TETRIS</div>
       <h1 class="game-title">Block <span class="italic">Architect</span></h1>
-      <p class="game-subtitle">구조를 쌓아, 한 줄을 완성하세요.</p>
+      <p class="game-subtitle">블럭를 쌓아, 한 줄을 완성하세요.</p>
     </div>
 
     <div class="game-layout">
@@ -772,8 +869,8 @@
 
         <!-- Start Overlay -->
         <div id="start-overlay" class="overlay">
-          <div class="overlay-title" style="font-style: italic;">Block Architect</div>
-          <div class="overlay-subtitle">구조를 쌓아, 한 줄을 완성하세요.</div>
+          <div class="overlay-title" style="font-style: italic;">Tetris</div>
+          <div class="overlay-subtitle">블럭를 쌓아, 한 줄을 완성하세요.</div>
           <button id="start-btn" class="btn btn-accent">START</button>
         </div>
 
@@ -1577,17 +1674,27 @@
       }
     }, { passive: false });
 
-    // Prevent double-tap zoom on mobile buttons
-    document.querySelectorAll('.mobile-btn, .btn').forEach(btn => {
+    // Prevent double-tap zoom on mobile game buttons only (not overlay buttons)
+    document.querySelectorAll('.mobile-btn').forEach(btn => {
       btn.addEventListener('touchstart', (e) => {
         e.preventDefault();
       }, { passive: false });
     });
 
-    // Buttons
-    document.getElementById('start-btn').addEventListener('click', startGame);
-    document.getElementById('restart-btn').addEventListener('click', startGame);
-    document.getElementById('resume-btn').addEventListener('click', togglePause);
+    // Buttons — both click and touchstart for mobile
+    function setupOverlayButton(id, action) {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', action);
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        action();
+      }, { passive: false });
+    }
+
+    setupOverlayButton('start-btn', startGame);
+    setupOverlayButton('restart-btn', startGame);
+    setupOverlayButton('resume-btn', togglePause);
 
     // ========================================
     // Initialize
