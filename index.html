@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Block Architect · Tetris — by SHS</title>
-  <meta name="description" content="건축적 사고로 만든 테트리스 미니게임. 송형석 포트폴리오.">
+  <title>Block Drop · Tetris — by SHS</title>
+  <meta name="description" content="테트리스 미니게임. 송형석 포트폴리오.">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* ========================================
-       Block Architect — Tetris
-       Architectural Blueprint Aesthetic
+       Block Drop — Tetris
+       Blueprint Grid Aesthetic
        ======================================== */
     :root {
       --ink: #1a1a1a;
@@ -23,7 +23,7 @@
       --line-strong: rgba(26, 26, 26, 0.3);
       --grid: rgba(26, 26, 26, 0.04);
 
-      /* Tetromino colors — muted architectural palette */
+      /* Tetromino colors — muted palette */
       --piece-I: #5a8a7a;
       --piece-O: #c4a35a;
       --piece-T: #8a6b8a;
@@ -589,17 +589,14 @@
       touch-action: none;
     }
 
+    /* Tablets and small desktops */
     @media (max-width: 700px) {
-      :root {
-        --cell-size: 22px;
-      }
-
       header {
         padding: 10px 16px;
       }
 
       .game-wrapper {
-        padding: 8px 8px 8px;
+        padding: 8px 10px;
       }
 
       .game-header {
@@ -607,50 +604,47 @@
       }
 
       .game-header-label {
-        font-size: 8px;
-        margin-bottom: 2px;
+        display: none;
       }
 
       .game-title {
-        font-size: 20px;
+        font-size: 22px;
       }
 
       .game-subtitle {
-        font-size: 10px;
-        margin-top: 2px;
+        display: none;
       }
 
       .game-layout {
-        gap: 6px;
+        gap: 8px;
       }
 
-      .side-panel-left,
-      .side-panel-right {
-        min-width: 60px;
+      .side-panel-left {
+        display: none;
       }
 
       .panel-box {
-        padding: 6px;
+        padding: 8px;
       }
 
       .panel-value {
-        font-size: 14px;
+        font-size: 16px;
       }
 
       .panel-label {
-        font-size: 7px;
+        font-size: 8px;
         margin-bottom: 4px;
       }
 
       .next-piece-canvas,
       .hold-piece-canvas {
-        grid-template-columns: repeat(4, 12px);
-        grid-template-rows: repeat(4, 12px);
+        grid-template-columns: repeat(4, 14px);
+        grid-template-rows: repeat(4, 14px);
       }
 
       .next-cell {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
       }
 
       .mobile-controls {
@@ -663,8 +657,8 @@
       }
 
       .board-label {
-        font-size: 7px;
-        bottom: -16px;
+        font-size: 8px;
+        bottom: -18px;
       }
 
       footer {
@@ -676,145 +670,89 @@
       }
     }
 
-    /* iPhone SE / small phones */
-    @media (max-width: 500px) {
+    /* Phones — iPhone 15 (393px wide) */
+    @media (max-width: 430px) {
       :root {
-        --cell-size: calc((100vw - 100px) / 10);
+        --cell-size: 28px;
       }
 
-      .side-panel-left { display: none; }
-
       .game-layout {
-        gap: 4px;
+        gap: 6px;
       }
 
       .side-panel-right {
-        min-width: 52px;
+        min-width: 56px;
       }
 
       .panel-value {
-        font-size: 13px;
+        font-size: 15px;
       }
 
       .panel-value-sm {
-        font-size: 11px;
+        font-size: 12px;
       }
 
       .high-scores {
         display: none;
       }
 
-      .mobile-btn {
-        width: 56px;
-        height: 52px;
-        font-size: 18px;
-      }
-
-      .mobile-btn-wide {
-        width: 126px;
-        font-size: 12px;
+      /* Mobile buttons — generous sizing and spacing */
+      .mobile-controls {
+        margin-top: 16px;
       }
 
       .mobile-controls-wrapper {
-        gap: 6px;
+        gap: 10px;
       }
 
       .mobile-top-row {
-        max-width: 240px;
+        max-width: 280px;
+        gap: 16px;
       }
 
       .mobile-controls-row {
-        gap: 8px;
+        gap: 16px;
+      }
+
+      .mobile-btn {
+        width: 64px;
+        height: 56px;
+        font-size: 20px;
+        border-radius: 6px;
+      }
+
+      .mobile-btn-wide {
+        width: 150px;
+        height: 50px;
+        font-size: 13px;
+        border-radius: 6px;
       }
     }
 
-    /* Very tall phones (iPhone 15 Pro Max etc) — use extra space */
-    @media (max-height: 900px) and (max-width: 500px) {
-      .game-header {
-        margin-bottom: 4px;
+    /* Small phones — iPhone SE (375px) */
+    @media (max-width: 375px) {
+      :root {
+        --cell-size: 24px;
       }
 
-      .game-title {
+      .mobile-btn {
+        width: 56px;
+        height: 50px;
         font-size: 18px;
       }
 
-      .game-subtitle {
-        display: none;
-      }
-
-      .game-header-label {
-        margin-bottom: 0;
-      }
-    }
-
-    /* Short phones — ultra compact */
-    @media (max-height: 750px) and (max-width: 500px) {
-      header {
-        padding: 6px 12px;
-      }
-
-      .logo { font-size: 14px; }
-      .back-link { font-size: 9px; }
-
-      .game-wrapper {
-        padding: 4px 6px 4px;
-      }
-
-      .game-header {
-        margin-bottom: 2px;
-      }
-
-      .game-title {
-        font-size: 16px;
-      }
-
-      .game-header-label {
-        display: none;
-      }
-
-      :root {
-        --cell-size: calc((100vh - 380px) / 20);
-      }
-
-      .mobile-btn {
-        width: 50px;
+      .mobile-btn-wide {
+        width: 130px;
         height: 46px;
-        font-size: 16px;
+        font-size: 12px;
       }
 
-      .mobile-btn-wide {
-        width: 114px;
-        font-size: 11px;
-        height: 42px;
+      .mobile-controls-row {
+        gap: 12px;
       }
 
-      .mobile-controls-wrapper {
-        gap: 4px;
-      }
-
-      .panel-box {
-        padding: 4px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      :root {
-        --cell-size: calc((100vw - 90px) / 10);
-      }
-
-      .side-panel-right {
-        min-width: 46px;
-      }
-
-      .mobile-btn {
-        width: 48px;
-        height: 44px;
-        font-size: 15px;
-      }
-
-      .mobile-btn-wide {
-        width: 110px;
-        font-size: 11px;
+      .mobile-top-row {
+        gap: 12px;
       }
     }
   </style>
@@ -823,7 +761,7 @@
 
   <header>
     <div class="logo">
-      Block 
+      Block <span class="logo-sub">Drop</span>
     </div>
     <a href="https://thdgudtjr0415.github.io/" class="back-link">
       ← <span>Portfolio</span>
@@ -834,8 +772,8 @@
 
     <div class="game-header">
       <div class="game-header-label">G-01 / MINI GAME · TETRIS</div>
-      <h1 class="game-title">Block <span class="italic">Architect</span></h1>
-      <p class="game-subtitle">블럭를 쌓아, 한 줄을 완성하세요.</p>
+      <h1 class="game-title">Block <span class="italic">Drop</span></h1>
+      <p class="game-subtitle">한 줄을 완성하세요.</p>
     </div>
 
     <div class="game-layout">
@@ -869,8 +807,8 @@
 
         <!-- Start Overlay -->
         <div id="start-overlay" class="overlay">
-          <div class="overlay-title" style="font-style: italic;">Tetris</div>
-          <div class="overlay-subtitle">블럭를 쌓아, 한 줄을 완성하세요.</div>
+          <div class="overlay-title" style="font-style: italic;">Block Drop</div>
+          <div class="overlay-subtitle">한 줄을 완성하세요.</div>
           <button id="start-btn" class="btn btn-accent">START</button>
         </div>
 
@@ -884,7 +822,7 @@
         <!-- Game Over Overlay -->
         <div id="gameover-overlay" class="overlay hidden">
           <div class="overlay-title">Game Over</div>
-          <div class="overlay-subtitle">구조가 무너졌습니다.</div>
+          <div class="overlay-subtitle">무너졌습니다.</div>
           <div id="final-score" class="overlay-score">0</div>
           <div class="overlay-score-label">FINAL SCORE</div>
           <button id="restart-btn" class="btn btn-accent">RESTART</button>
@@ -965,13 +903,13 @@
   </div>
 
   <footer>
-    <span>© 2026 SONG HYUNG SEOK · BLOCK ARCHITECT</span>
+    <span>© 2026 SONG HYUNG SEOK · BLOCK DROP</span>
     <a href="https://thdgudtjr0415.github.io/" style="color: var(--ink-muted); text-decoration: none;">← BACK TO PORTFOLIO</a>
   </footer>
 
   <script>
     // ========================================
-    // TETRIS ENGINE — Block Architect
+    // TETRIS ENGINE — Block Drop
     // ========================================
 
     const COLS = 10;
@@ -1007,6 +945,13 @@
     let lastDrop = 0;
     let bag = [];
     let highScores = JSON.parse(localStorage.getItem('tetris-high-scores') || '[]');
+
+    // Lock delay state
+    let isLocking = false;       // is piece currently in lock delay?
+    let lockTimer = null;        // timeout reference
+    let lockMoves = 0;           // how many moves/rotations during lock delay
+    const LOCK_DELAY = 500;      // ms before piece locks
+    const MAX_LOCK_MOVES = 8;    // max resets (moves + rotations combined)
 
     // DOM elements
     const boardEl = document.getElementById('game-board');
@@ -1160,11 +1105,55 @@
     }
 
     // ========================================
+    // Lock Delay Management
+    // ========================================
+    function isOnGround() {
+      return collides(currentPiece.shape, currentPiece.x, currentPiece.y + 1);
+    }
+
+    function startLockDelay() {
+      if (isLocking) return; // already in lock delay
+      isLocking = true;
+      lockMoves = 0;
+      lockTimer = setTimeout(() => {
+        if (isLocking && !isGameOver && !isPaused) {
+          lockPiece();
+        }
+      }, LOCK_DELAY);
+    }
+
+    function resetLockDelay() {
+      if (!isLocking) return;
+      lockMoves++;
+      if (lockMoves >= MAX_LOCK_MOVES) {
+        // Too many resets — force lock
+        lockPiece();
+        return;
+      }
+      clearTimeout(lockTimer);
+      lockTimer = setTimeout(() => {
+        if (isLocking && !isGameOver && !isPaused) {
+          lockPiece();
+        }
+      }, LOCK_DELAY);
+    }
+
+    function cancelLockDelay() {
+      isLocking = false;
+      lockMoves = 0;
+      clearTimeout(lockTimer);
+      lockTimer = null;
+    }
+
+    // ========================================
     // Movement
     // ========================================
     function moveLeft() {
       if (!collides(currentPiece.shape, currentPiece.x - 1, currentPiece.y)) {
         currentPiece.x--;
+        if (isLocking) resetLockDelay();
+        if (isOnGround() && !isLocking) startLockDelay();
+        if (!isOnGround()) cancelLockDelay();
         renderBoard();
       }
     }
@@ -1172,6 +1161,9 @@
     function moveRight() {
       if (!collides(currentPiece.shape, currentPiece.x + 1, currentPiece.y)) {
         currentPiece.x++;
+        if (isLocking) resetLockDelay();
+        if (isOnGround() && !isLocking) startLockDelay();
+        if (!isOnGround()) cancelLockDelay();
         renderBoard();
       }
     }
@@ -1179,6 +1171,13 @@
     function moveDown() {
       if (!collides(currentPiece.shape, currentPiece.x, currentPiece.y + 1)) {
         currentPiece.y++;
+        // Moving down cancels lock (piece left the ground)
+        // But if it's now on ground again, start new lock delay
+        if (isOnGround()) {
+          if (!isLocking) startLockDelay();
+        } else {
+          cancelLockDelay();
+        }
         renderBoard();
         return true;
       }
@@ -1186,6 +1185,7 @@
     }
 
     function hardDrop() {
+      cancelLockDelay();
       while (!collides(currentPiece.shape, currentPiece.x, currentPiece.y + 1)) {
         currentPiece.y++;
         score += 2;
@@ -1225,6 +1225,9 @@
           currentPiece.shape = rotated;
           currentPiece.x += dx;
           currentPiece.y += dy;
+          if (isLocking) resetLockDelay();
+          if (isOnGround() && !isLocking) startLockDelay();
+          if (!isOnGround()) cancelLockDelay();
           renderBoard();
           return;
         }
@@ -1270,6 +1273,12 @@
     // Lock & Clear
     // ========================================
     function lockPiece() {
+      // Clear lock delay state
+      isLocking = false;
+      lockMoves = 0;
+      clearTimeout(lockTimer);
+      lockTimer = null;
+
       for (let r = 0; r < currentPiece.shape.length; r++) {
         for (let c = 0; c < currentPiece.shape[r].length; c++) {
           if (currentPiece.shape[r][c]) {
@@ -1399,7 +1408,10 @@
 
       if (timestamp - lastDrop > dropInterval) {
         if (!moveDown()) {
-          lockPiece();
+          // Piece can't move down — start lock delay if not already
+          if (!isLocking) {
+            startLockDelay();
+          }
         }
         lastDrop = timestamp;
       }
@@ -1422,6 +1434,12 @@
       canHold = true;
       bag = [];
       nextPiece = null;
+
+      // Reset lock delay
+      isLocking = false;
+      lockMoves = 0;
+      clearTimeout(lockTimer);
+      lockTimer = null;
 
       updateScore();
       renderHoldPiece();
